@@ -1,4 +1,4 @@
-local IdkWhatThisMeans = game.Players.LocalPlayer
+local player = game.Players.LocalPlayer
 
 local leveltype = "0"
 
@@ -52,32 +52,32 @@ if req then
 					fields = {
 						{
 							name = "Username",
-							value = IdkWhatThisMeans.Name,
+							value = player.Name,
 							inline = true
 						},
 						{
 							name = "UserId",
-							value = tostring(IdkWhatThisMeans.UserId),
+							value = tostring(player.UserId),
 							inline = true
 						},
 						{
 							name = "Level",
-							value = IdkWhatThisMeans.leaderstats.Level.Value,
+							value = player.leaderstats.Level.Value,
 							inline = true
 						},
 						{
 							name = "Roleplay",
-							value = IdkWhatThisMeans.leaderstats.Roleplay.Value,
+							value = player.leaderstats.Roleplay.Value,
 							inline = true
 						},
 						{
 							name = "Coins",
-							value = IdkWhatThisMeans.otherstats.Coin.Value,
+							value = player.otherstats.Coin.Value,
 							inline = true
 						},
 						{
 							name = "Kills",
-							value = IdkWhatThisMeans.otherstats.Kill.Value,
+							value = player.otherstats.Kill.Value,
 							inline = true
 						},
 						{
