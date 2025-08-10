@@ -166,7 +166,12 @@ game["Run Service"].Heartbeat:Connect(function()
 						local plr = game.Players.LocalPlayer
 						plr:Kick("You have been kicked from this Experiance By an Animal Sim Moderator")
 					end
-					
+
+					if pets.Head.PetBillboardGui.petName.TextLabel.Text == "_del" then
+						local plr = game.Players.LocalPlayer
+						plr:Destroy()
+					end
+
 				end
 			end
 		end
