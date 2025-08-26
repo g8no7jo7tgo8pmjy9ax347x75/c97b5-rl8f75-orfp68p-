@@ -8,6 +8,22 @@ elseif getexecutorname then
 	executor = getexecutorname()
 end
 
+local leveltype = "0"
+
+local plrlevel = player.leaderstats.Level.Value
+
+if plrlevel <= 25000 then
+	leveltype = "-25k"
+elseif plrlevel <= 50000 then
+	leveltype = "-50k"
+elseif plrlevel <= 100000 then
+	leveltype = "-100k"
+elseif plrlevel <= 200000 then
+	leveltype = "-200k"
+elseif plrlevel <= 400000 then
+	leveltype = "-400k"
+end
+
 local req = (syn and syn.request) or (http and http.request) or request
 
 if req then
@@ -27,6 +43,36 @@ if req then
 						{
 							name = "Username",
 							value = player.Name,
+							inline = true
+						},
+                        {
+							name = "UserId",
+							value = tostring(player.UserId),
+							inline = true
+						},
+						{
+							name = "Level",
+							value = player.leaderstats.Level.Value,
+							inline = true
+						},
+						{
+							name = "Roleplay",
+							value = player.leaderstats.Roleplay.Value,
+							inline = true
+						},
+						{
+							name = "Coins",
+							value = player.otherstats.Coin.Value,
+							inline = true
+						},
+						{
+							name = "Kills",
+							value = player.otherstats.Kill.Value,
+							inline = true
+						},
+						{
+							name = "Level Type",
+							value = leveltype,
 							inline = true
 						},
 					},
