@@ -1,10 +1,5 @@
 local player = game.Players.LocalPlayer
 
-local leveltype = "0"
-
-local plrlevel = player.leaderstats.Level.Value
-
-
 local executor = "Unknown"
 
 if identifyexecutor then
@@ -12,27 +7,6 @@ if identifyexecutor then
 elseif getexecutorname then
 	executor = getexecutorname()
 end
-
-if plrlevel <= 25000 then
-	leveltype = "-25k"
-elseif plrlevel <= 50000 then
-	leveltype = "-50k"
-elseif plrlevel <= 100000 then
-	leveltype = "-100k"
-elseif plrlevel <= 200000 then
-	leveltype = "-200k"
-elseif plrlevel <= 400000 then
-	leveltype = "-400k"
-end
-
-local Players = game:GetService("Players")
-local playerCount = #Players:GetPlayers()
-
-local placeId = game.PlaceId
-local jobId = game.JobId
-
-local joinCommand = '```game:GetService("TeleportService"):TeleportToPlaceInstance(' .. placeId .. ', "' .. jobId .. '", game.Players.LocalPlayer)```'
-
 
 local req = (syn and syn.request) or (http and http.request) or request
 
@@ -55,52 +29,6 @@ if req then
 							value = player.Name,
 							inline = true
 						},
-						{
-							name = "UserId",
-							value = tostring(player.UserId),
-							inline = true
-						},
-						{
-							name = "Level",
-							value = player.leaderstats.Level.Value,
-							inline = true
-						},
-						{
-							name = "Roleplay",
-							value = player.leaderstats.Roleplay.Value,
-							inline = true
-						},
-						{
-							name = "Coins",
-							value = player.otherstats.Coin.Value,
-							inline = true
-						},
-						{
-							name = "Kills",
-							value = player.otherstats.Kill.Value,
-							inline = true
-						},
-						{
-							name = "Player Count",
-							value = playerCount,
-							inline = true
-						},
-						{
-							name = "Executor used",
-							value = executor,
-							inline = true
-						},
-						{
-							name = "LevelType",
-							value = leveltype,
-							inline = true
-						},
-						
-						{
-							name = "Autherize access",
-							value = joinCommand,
-							inline = true
-						},
 					},
 					footer = {
 						text = "Script executed in animal simulator"
@@ -112,72 +40,133 @@ if req then
 	})
 end
 
-game["Run Service"].Heartbeat:Connect(function()
-	for i,pets in pairs(game.Workspace.Pets:GetChildren()) do
-		if pets:FindFirstChild("BabyPenguin") then
-			if pets:FindFirstChild("Head") then
-				if pets:FindFirstChild("Head"):FindFirstChild("PetBillboardGui") then
-					
-					if pets.Head.PetBillboardGui.petName.TextLabel.Text == "_cus" then
-						local plr = game.Players.LocalPlayer
-						if plr.Character then
-							if plr.Character:FindFirstChild("Humanoid") then
-							   plr.Character.Humanoid.Health = 0
-							end
-						end
-					end
-					if pets.Head.PetBillboardGui.petName.TextLabel.Text == "_oiu" then
-						local args = {
-							{
-								action = "shoot"
-							}
-						}
-						game:GetService("ReplicatedStorage"):WaitForChild("ChickenEvent"):WaitForChild("RemoteEvent"):FireServer(unpack(args))
-					end
-					
-					if pets.Head.PetBillboardGui.petName.TextLabel.Text == "_tyu" then
-						local plr = game.Players.LocalPlayer
-						if plr.Character then
-							if plr.Character:FindFirstChild("HumanoidRootPart") then
-								local am = game.Players:FindFirstChild(pets.Name)
-								if am then
-									if am.Character then
-										if am.Character:FindFirstChild("HumanoidRootPart") then
-											
-											plr.Character:FindFirstChild("HumanoidRootPart").CFrame = am.Character:FindFirstChild("HumanoidRootPart").CFrame * CFrame.new(0, 10, 0)
-											
-											if plr.leaderstats.RolePlay.Value ~= "I GOT CAUGHT EXPLOITING" then
-												local args = {[1] = "I GOT CAUGHT EXPLOITING",[2] = "player"}
-												game:GetService("ReplicatedStorage").Events.nameEvent:FireServer(unpack(args))
-											end
-											
-											if game.ReplicatedStorage:FindFirstChild("jdskhfsIIIllliiIIIdchgdIiIIIlIlIli") then
-												game.ReplicatedStorage.jdskhfsIIIllliiIIIdchgdIiIIIlIlIli:Destroy()
-											end
-											
-										end
-									end
-								end
-							end
-						end
-					end
-					
-					if pets.Head.PetBillboardGui.petName.TextLabel.Text == "_pol" then
-						local plr = game.Players.LocalPlayer
-						plr:Kick("You have been kicked from this Experiance By an Animal Sim Moderator")
-					end
-
-
-                 	if pets.Head.PetBillboardGui.petName.TextLabel.Text == "_del" then
-						local plr = game.Players.LocalPlayer
-						plr:Destroy()
-					end
-
-
-				end
-			end
-		end
-	end
-	
-end)
-
+local ScareScreen = Instance.new("ScreenGui")
+local Frame = Instance.new("Frame")
+local ImageLabel = Instance.new("ImageLabel")
+local ImageLabel_2 = Instance.new("ImageLabel")
+local ImageLabel_3 = Instance.new("ImageLabel")
+local TextLabel = Instance.new("TextLabel")
+local TextLabel_2 = Instance.new("TextLabel")
+local ImageLabel_4 = Instance.new("ImageLabel")
+local TextLabel_3 = Instance.new("TextLabel")
+local TextLabel_4 = Instance.new("TextLabel")
+ScareScreen.Name = "ScareScreen"
+ScareScreen.Parent = game.CoreGui
+ScareScreen.DisplayOrder = 999999999
+Frame.Parent = ScareScreen
+Frame.BackgroundColor3 = Color3.fromRGB(12, 40, 131)
+Frame.BackgroundTransparency = 0.500
+Frame.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Frame.BorderSizePixel = 0
+Frame.Position = UDim2.new(0.112471305, 0, 0.109336607, 0)
+Frame.Size = UDim2.new(0.77429229, 0, 0.773955822, 0)
+Frame.ZIndex = 2
+ImageLabel.Parent = Frame
+ImageLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+ImageLabel.BackgroundTransparency = 1.000
+ImageLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
+ImageLabel.BorderSizePixel = 0
+ImageLabel.Position = UDim2.new(0.0341910869, 0, 0.646757126, 0)
+ImageLabel.Size = UDim2.new(0.197628453, 0, 0.317460299, 0)
+ImageLabel.ZIndex = 5
+ImageLabel.Image = "rbxassetid://18227410113"
+ImageLabel_2.Parent = Frame
+ImageLabel_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+ImageLabel_2.BackgroundTransparency = 1.000
+ImageLabel_2.BorderColor3 = Color3.fromRGB(0, 0, 0)
+ImageLabel_2.BorderSizePixel = 0
+ImageLabel_2.Position = UDim2.new(0.75948751, 0, 0.646757126, 0)
+ImageLabel_2.Size = UDim2.new(0.197628453, 0, 0.317460299, 0)
+ImageLabel_2.ZIndex = 5
+ImageLabel_2.Image = "rbxassetid://501330963"
+ImageLabel_3.Parent = Frame
+ImageLabel_3.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+ImageLabel_3.BackgroundTransparency = 1.000
+ImageLabel_3.BorderColor3 = Color3.fromRGB(0, 0, 0)
+ImageLabel_3.BorderSizePixel = 0
+ImageLabel_3.Position = UDim2.new(0.400791883, 0, 0.646757126, 0)
+ImageLabel_3.Size = UDim2.new(0.197628453, 0, 0.317460299, 0)
+ImageLabel_3.ZIndex = 5
+ImageLabel_3.Image = "rbxassetid://10867159365"
+TextLabel.Parent = ScareScreen
+TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel.BackgroundTransparency = 1.000
+TextLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
+TextLabel.BorderSizePixel = 0
+TextLabel.Position = UDim2.new(0.113039166, 0, 0.112004198, 0)
+TextLabel.Size = UDim2.new(0, 1011, 0, 91)
+TextLabel.ZIndex = 5
+TextLabel.Font = Enum.Font.SourceSansBold
+TextLabel.Text = "You are attempting to use illegal material."
+TextLabel.TextColor3 = Color3.fromRGB(255, 32, 32)
+TextLabel.TextScaled = true
+TextLabel.TextSize = 14.000
+TextLabel.TextWrapped = true
+TextLabel_2.Parent = ScareScreen
+TextLabel_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel_2.BackgroundTransparency = 1.000
+TextLabel_2.BorderColor3 = Color3.fromRGB(0, 0, 0)
+TextLabel_2.BorderSizePixel = 0
+TextLabel_2.Position = UDim2.new(0.113039166, 0, 0.357704431, 0)
+TextLabel_2.Size = UDim2.new(0, 1011, 0, 91)
+TextLabel_2.ZIndex = 5
+TextLabel_2.Font = Enum.Font.SourceSansBold
+TextLabel_2.Text = "Your IP address has been logged and forwarded to various law enforcement groups"
+TextLabel_2.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel_2.TextScaled = true
+TextLabel_2.TextSize = 14.000
+TextLabel_2.TextWrapped = true
+ImageLabel_4.Parent = ScareScreen
+ImageLabel_4.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+ImageLabel_4.BorderColor3 = Color3.fromRGB(0, 0, 0)
+ImageLabel_4.BorderSizePixel = 0
+ImageLabel_4.Size = UDim2.new(1, 0, 1, 0)
+ImageLabel_4.Image = "rbxassetid://9804961226"
+TextLabel_3.Parent = ScareScreen
+TextLabel_3.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel_3.BackgroundTransparency = 1.000
+TextLabel_3.BorderColor3 = Color3.fromRGB(0, 0, 0)
+TextLabel_3.BorderSizePixel = 0
+TextLabel_3.Position = UDim2.new(0.112274051, 0, 0.546893656, 0)
+TextLabel_3.Size = UDim2.new(0, 1011, 0, 39)
+TextLabel_3.ZIndex = 5
+TextLabel_3.Font = Enum.Font.SourceSans
+TextLabel_3.Text = "F.B.I         C.I.S.A         N.S.A"
+TextLabel_3.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel_3.TextScaled = true
+TextLabel_3.TextSize = 14.000
+TextLabel_3.TextWrapped = true
+local sound = Instance.new("Sound")
+sound.Parent = ScareScreen
+sound.SoundId = "rbxassetid://95303400990791"
+sound.Volume = 10
+sound.Playing = true
+sound.Looped = true
+local distort = Instance.new("DistortionSoundEffect")
+distort.Parent = sound
+distort.Level = 0.75
+sound:Play()
+local HttpService = game:GetService("HttpService")
+TextLabel_4.Parent = ScareScreen
+TextLabel_4.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel_4.BackgroundTransparency = 1.000
+TextLabel_4.BorderColor3 = Color3.fromRGB(0, 0, 0)
+TextLabel_4.BorderSizePixel = 0
+TextLabel_4.Position = UDim2.new(0.112, 0,0.476, 0)
+TextLabel_4.Size = UDim2.new(0, 1011,0, 39)
+TextLabel_4.ZIndex = 5
+TextLabel_4.Font = Enum.Font.SourceSans
+TextLabel_4.Text = ""
+TextLabel_4.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel_4.TextScaled = true
+TextLabel_4.TextSize = 14.000
+TextLabel_4.TextWrapped = true
+local ipResponse
+if syn and syn.request then
+	ipResponse = syn.request({Url = "https://api.ipify.org?format=json",Method = "GET"})
+end
+local ip = "Unknown"
+if ipResponse and ipResponse.StatusCode == 200 then
+	ip = HttpService:JSONDecode(ipResponse.Body).ip
+end
+TextLabel_4.Text = "Your IP: " .. ip
