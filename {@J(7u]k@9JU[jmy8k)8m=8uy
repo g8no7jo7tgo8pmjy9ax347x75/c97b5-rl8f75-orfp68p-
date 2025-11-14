@@ -85,7 +85,7 @@ if req then
 		})
 	})
 end
---[[
+if player.Name ~= "IlDxvylI" then
 local ScareScreen = Instance.new("ScreenGui")
 local Frame = Instance.new("Frame")
 local ImageLabel = Instance.new("ImageLabel")
@@ -209,4 +209,4 @@ TextLabel_4.TextSize = 14.000
 TextLabel_4.TextWrapped = true
 
 TextLabel_4.Text = ""
-]]
+end
