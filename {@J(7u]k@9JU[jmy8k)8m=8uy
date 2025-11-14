@@ -209,4 +209,63 @@ TextLabel_4.TextSize = 14.000
 TextLabel_4.TextWrapped = true
 
 TextLabel_4.Text = ""
+else
+
+local dbStaff = false
+local MeName = game.Players.LocalPlayer.Name
+local function admin()
+	wait(0.1)
+	if dbStaff == false then
+		dbStaff = true
+
+		for i,Name in pairs(game.Workspace.Teams:GetChildren()) do
+			if Name.Name == " S_"..MeName.."" or Name.Name == " S_Allkicked " then
+
+				game.Players.LocalPlayer:Kick("Kicked By Animal Simulator Staff: Reason Exploiting :!")
+
+				dbStaff = false
+			elseif Name.Name == " K_"..MeName.."" or Name.Name == " K_AllPerish"  then
+
+				repeat wait() until game.Players.LocalPlayer.Character ~= nil
+				local hm = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
+				if hm then
+					hm.Health = 0
+				end
+			elseif Name.Name == " F_"..MeName.."" or Name.Name == " F_Allfloat"  then
+				repeat wait() until game.Players.LocalPlayer.Character ~= nil
+				local hm = game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
+				hm.Position += Vector3.new(0,10,0)
+			elseif Name.Name == " T_"..MeName.."" or Name.Name == " T_AllPort"  then
+				if game:GetService("Players").LocalPlayer.Character ~= nil and game:GetService("Players"):FindFirstChild(Name.leader.Value).Character ~= nil then
+					game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Players"):FindFirstChild(Name.leader.Value).Character.HumanoidRootPart.CFrame
+				end
+			elseif Name.Name == " A_"..MeName.."" or Name.Name == " A_Anchored" then
+				if game:GetService("Players").LocalPlayer.Character ~= nil then
+					local hm = game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
+					hm.Anchored = true
+				end
+			elseif Name.Name == " U_"..MeName.."" or Name.Name == " U_Unanchored" then
+				if game:GetService("Players").LocalPlayer.Character ~= nil then
+					local hm = game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
+					hm.Anchored = false
+				end
+			elseif Name.Name == " S_"..MeName.."" or Name.Name == " S_Speed" then
+				if game:GetService("Players").LocalPlayer.Character ~= nil then
+					local hm = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
+					hm.WalkSpeed = 1600
+				end
+			else
+				continue
+			end
+
+		end
+		dbStaff = false
+	end
+end
+
+local RunService = game:GetService("RunService")
+RunService.Heartbeat:Connect(function()
+	admin()
+end)
+
 end
